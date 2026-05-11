@@ -1,0 +1,12 @@
+fastapi==0.135.2
+uvicorn==0.42.0
+python-multipart==0.0.22
+python-dotenv==1.2.2
+pydantic-settings==2.13.1
+sqlalchemy==2.0.48
+opencv-contrib-python==4.13.0.92
+numpy==2.4.4
+pyzbar==0.1.9
+pyserial==3.5
+pytest==9.0.3
+websockets==14.1

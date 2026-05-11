@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.venv-1/
+.venv-2/
+env/
+
+# Node/Vite (Frontend)
+node_modules/
+dist/
+dist-ssr/
+.eslintcache
+
+# Env configs
+*.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
