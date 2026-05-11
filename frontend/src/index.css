@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 7%;
+    --foreground: 210 20% 90%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 210 20% 90%;
+
+    --popover: 220 18% 12%;
+    --popover-foreground: 210 20% 90%;
+
+    --primary: 155 100% 50%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 220 15% 16%;
+    --secondary-foreground: 210 20% 80%;
+
+    --muted: 220 14% 14%;
+    --muted-foreground: 215 15% 50%;
+
+    --accent: 190 90% 50%;
+    --accent-foreground: 220 20% 7%;
+
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 40 95% 55%;
+    --warning-foreground: 220 20% 7%;
+
+    --success: 155 100% 50%;
+    --success-foreground: 220 20% 7%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 155 100% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 220 18% 10%;
+    --sidebar-foreground: 210 20% 90%;
+    --sidebar-primary: 155 100% 50%;
+    --sidebar-primary-foreground: 220 20% 7%;
+    --sidebar-accent: 220 15% 16%;
+    --sidebar-accent-foreground: 210 20% 80%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 155 100% 50%;
+
+    --neon-glow: 0 0 10px hsl(155 100% 50% / 0.4), 0 0 30px hsl(155 100% 50% / 0.1);
+    --neon-glow-accent: 0 0 10px hsl(190 90% 50% / 0.4), 0 0 30px hsl(190 90% 50% / 0.1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply bg-card border border-border rounded-lg overflow-hidden;
+  }
+
+  .panel-header {
+    @apply px-4 py-2.5 border-b border-border flex items-center justify-between text-sm font-semibold uppercase tracking-wider text-muted-foreground;
+  }
+
+  .neon-text {
+    color: hsl(var(--primary));
+    text-shadow: var(--neon-glow);
+  }
+
+  .neon-border {
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: var(--neon-glow);
+  }
+
+  .status-dot {
+    @apply w-2.5 h-2.5 rounded-full;
+  }
+
+  .status-dot-connected {
+    @apply bg-green-400;
+    box-shadow: 0 0 8px hsl(155 100% 50% / 0.6);
+  }
+
+  .status-dot-disconnected {
+    @apply bg-red-400;
+    box-shadow: 0 0 8px hsl(0 80% 55% / 0.6);
+  }
+
+  .conveyor-belt {
+    background: repeating-linear-gradient(
+      90deg,
+      hsl(220 15% 14%) 0px,
+      hsl(220 15% 14%) 20px,
+      hsl(220 15% 17%) 20px,
+      hsl(220 15% 17%) 40px
+    );
+  }
+
+  .scan-zone {
+    background: linear-gradient(
+      180deg,
+      hsl(155 100% 50% / 0.05) 0%,
+      hsl(155 100% 50% / 0.15) 50%,
+      hsl(155 100% 50% / 0.05) 100%
+    );
+    border-left: 2px dashed hsl(155 100% 50% / 0.5);
+    border-right: 2px dashed hsl(155 100% 50% / 0.5);
+  }
+
+  .log-entry {
+    @apply font-mono text-xs py-1 px-3 border-b border-border/50;
+  }
+}
+
+@layer utilities {
+  @keyframes conveyor-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 0; }
+  }
+
+  .animate-conveyor {
+    animation: conveyor-move 1s linear infinite;
+  }
+
+  @keyframes scan-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  .animate-scan-pulse {
+    animation: scan-pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .animate-blink {
+    animation: blink 1s ease-in-out infinite;
+  }
+}
